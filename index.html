@@ -1,23 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My AKS Deployment</title>
+<title>AKS Login App</title>
+
 <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f0f2f5; padding: 50px; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: inline-block; }
-        h1 { color: #0078d4; }
-        /* Added a subtle footer style */
-        .footer { margin-top: 20px; font-size: 0.8em; color: #666; border-top: 1px solid #eee; pt: 10px; }
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #0078d4, #00b4ff);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .login-card {
+        background: white;
+        padding: 40px;
+        width: 320px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    h1 {
+        color: #0078d4;
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #0078d4;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #005fa3;
+    }
+
+    .footer {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .success {
+        color: green;
+        margin-top: 10px;
+        display: none;
+    }
 </style>
+
+<script>
+function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    if(user && pass){
+        document.getElementById("msg").style.display = "block";
+    }
+}
+</script>
 </head>
+
 <body>
-<div class="card">
-<h1>Hello from AKS!</h1>
-<p>This page was built in the cloud and deployed to Azure Kubernetes Service.</p>
-<p>Status: <b style="color: #28a745;">Running Successfully</b></p>
-<div class="footer">
-            Deployed on: 2026-01-29 | Build v1.0.1
+
+<div class="login-card">
+    <h1>AKS Login</h1>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <div id="msg" class="success">
+        Login Successful 🚀<br>
+        Running on AKS
+    </div>
+
+    <div class="footer">
+        Azure Kubernetes Service Demo
+    </div>
 </div>
-</div>
+
 </body>
 </html>
+
